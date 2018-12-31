@@ -4,7 +4,7 @@ module.exports = {
   publisher: 'e2p', // Organization name used for SEO schema
   siteDescription:
     'e2p-jam-gcn',
-  siteUrl: 'https://XXXXXX.netlify.com', // Site domain. Do not include a trailing slash! If you wish to use a path prefix you can read more about that here: https://www.gatsbyjs.org/docs/path-prefix/
+  siteUrl: 'https://awesome-bohr-52b0b9.netlify.com', // Site domain. Do not include a trailing slash! If you wish to use a path prefix you can read more about that here: https://www.gatsbyjs.org/docs/path-prefix/
   postsPerHomePage: 7, // Number of posts shown on the 1st page of of the index.js template (home page)
   postsPerPage: 6, // Number of posts shown on paginated pages
   author: 'Sebastian Gelotte', // Author for RSS author segment and SEO schema
