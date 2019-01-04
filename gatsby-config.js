@@ -118,10 +118,10 @@ module.exports = {
           {
             serialize(ctx) {
               const rssMetadata = ctx.query.site.siteMetadata.rssMetadata
-              return ctx.query.allContentfulPost.edges.map(edge => ({
-                date: edge.node.publishDate,
+              return ctx.query.allContentfulCourse.edges.map(edge => ({
+                date: edge.node.date,
                 title: edge.node.title,
-                description: edge.node.body.childMarkdownRemark.excerpt,
+                description: edge.node.description.childMarkdownRemark.excerpt,
 
                 url: rssMetadata.site_url + '/' + edge.node.slug,
                 guid: rssMetadata.site_url + '/' + edge.node.slug,
@@ -134,23 +134,23 @@ module.exports = {
             },
             query: `
               {
-            allContentfulPost(limit: 1000, sort: {fields: [publishDate], order: DESC}) {
-               edges {
-                 node {
-                   title
-                   slug
-                   publishDate(formatString: "MMMM DD, YYYY")
-                   body {
-                     childMarkdownRemark {
-                       html
-                       excerpt(pruneLength: 80)
-                     }
-                   }
-                 }
-               }
-             }
-           }
-      `,
+                allContentfulCourse(limit: 1000, sort: {fields: [date], order: DESC}) {
+                  edges {
+                    node {
+                      title
+                      slug
+                      date(formatString: "MMMM DD, YYYY")
+                      description {
+                        childMarkdownRemark {
+                          html
+                          excerpt(pruneLength: 80)
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            `,
             output: '/rss.xml',
           },
         ],

@@ -5,8 +5,8 @@ module.exports = {
   siteDescription:
     'e2p-jam-gcn',
   siteUrl: 'https://awesome-bohr-52b0b9.netlify.com', // Site domain. Do not include a trailing slash! If you wish to use a path prefix you can read more about that here: https://www.gatsbyjs.org/docs/path-prefix/
-  postsPerHomePage: 7, // Number of posts shown on the 1st page of of the index.js template (home page)
-  postsPerPage: 6, // Number of posts shown on paginated pages
+  coursesPerHomePage: 7, // Number of courses shown on the 1st page of of the index.js template (home page)
+  coursesPerPage: 6, // Number of courses shown on paginated pages
   author: 'Sebastian Gelotte', // Author for RSS author segment and SEO schema
   authorUrl: 'https://github.com/sebastiangelotte', // URL used for author and publisher schema, can be a social profile or other personal site
   userTwitter: '@twitter', // Change for Twitter Cards

@@ -10,8 +10,7 @@ import SEO from '../components/SEO'
 import config from '../utils/siteConfig'
 
 const Index = ({ data, pageContext }) => {
-  const posts = data.allContentfulPost.edges
-  const featuredPost = posts[0].node
+  const courses = data.allContentfulCourse.edges
   const { currentPage } = pageContext
   const isFirstPage = currentPage === 1
 
@@ -24,20 +23,11 @@ const Index = ({ data, pageContext }) => {
         </Helmet>
       )}
       <Container>
-        {isFirstPage ? (
-          <CardList>
-            <Card {...featuredPost} featured />
-            {posts.slice(1).map(({ node: post }) => (
-              <Card key={post.id} {...post} />
-            ))}
-          </CardList>
-        ) : (
-          <CardList>
-            {posts.map(({ node: post }) => (
-              <Card key={post.id} {...post} />
-            ))}
-          </CardList>
-        )}
+        <CardList>
+          {courses.map(({ node: course }) => (
+            <Card key={course.id} {...course} />
+          ))}
+        </CardList>
       </Container>
       <Pagination context={pageContext} />
     </Layout>
@@ -45,30 +35,18 @@ const Index = ({ data, pageContext }) => {
 }
 
 export const query = graphql`
-  query($skip: Int!, $limit: Int!) {
-    allContentfulPost(
-      sort: { fields: [publishDate], order: DESC }
-      limit: $limit
-      skip: $skip
+  query {
+    allContentfulCourse(
+      sort: { fields: [date], order: DESC }
+      limit: 10000
     ) {
       edges {
         node {
-          title
-          id
           slug
-          publishDate(formatString: "MMMM DD, YYYY")
-          heroImage {
-            title
-            fluid(maxWidth: 1800) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
-            }
-          }
-          body {
-            childMarkdownRemark {
-              html
-              excerpt(pruneLength: 80)
-            }
-          }
+          date
+          title
+          subTitle
+          description {childMarkdownRemark {html}}
         }
       }
     }

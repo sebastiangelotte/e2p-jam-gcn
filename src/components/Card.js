@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
 
 const Post = styled.li`
   position: relative;
@@ -54,16 +53,15 @@ const Excerpt = styled.p`
   line-height: 1.6;
 `
 
-const Card = ({ slug, heroImage, title, publishDate, body, ...props }) => {
+const Card = ({ slug, title, date, description, ...props }) => {
   return (
     <Post featured={props.featured}>
       <Link to={`/${slug}/`}>
-        <Img fluid={heroImage.fluid} backgroundColor={'#eeeeee'} />
         <Title>{title}</Title>
-        <Date>{publishDate}</Date>
+        <Date>{date}</Date>
         <Excerpt
           dangerouslySetInnerHTML={{
-            __html: body.childMarkdownRemark.excerpt,
+            __html: description.childMarkdownRemark.excerpt,
           }}
         />
       </Link>
