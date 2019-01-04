@@ -127,7 +127,7 @@ module.exports = {
                 guid: rssMetadata.site_url + '/' + edge.node.slug,
                 custom_elements: [
                   {
-                    'content:encoded': edge.node.body.childMarkdownRemark.html,
+                    'content:encoded': edge.node.description.childMarkdownRemark.html,
                   },
                 ],
               }))
