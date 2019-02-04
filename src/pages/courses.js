@@ -5,25 +5,29 @@ import Layout from '../components/Layout'
 import Container from '../components/Container'
 import PageTitle from '../components/PageTitle'
 import SEO from '../components/SEO'
+import CardList from '../components/CardList'
+import Card from '../components/Card';
 
 const Courses = ({ data }) => {
   const courses = data.allContentfulCourse.edges
   const postNode = {
-    title: `Courses - ${config.siteTitle}`,
+    title: `Kurser - ${config.siteTitle}`,
   }
 
   return (
     <Layout>
       <Helmet>
-        <title>{`Courses - ${config.siteTitle}`}</title>
+        <title>{`Kurser - ${config.siteTitle}`}</title>
       </Helmet>
-      <SEO postNode={postNode} pagePath="courses" customTitle />
+      <SEO postNode={postNode} pagePath="kurser" customTitle />
 
       <Container>
-        <PageTitle>Courses</PageTitle>
-        {courses.map(({ node: course }) => (
-          <h2 key={course.slug}>{course.title}</h2>
-        ))}
+        <PageTitle>Kurser</PageTitle>
+        <CardList>
+          {courses.map(({ node: course }) => (
+            <Card key={course.id} {...course} />
+          ))}
+        </CardList>
       </Container>
     </Layout>
   )
@@ -42,10 +46,11 @@ export const query = graphql`
           date
           title
           subTitle
+          description {childMarkdownRemark {html}}
         }
       }
     }
   }
-`
+  `
 
 export default Courses

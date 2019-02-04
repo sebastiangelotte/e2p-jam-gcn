@@ -15,22 +15,20 @@ const Nav = styled.nav`
 
   ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   li {
-    display: inline-block;
     margin-left: 1em;
     &:first-child {
-      position: relative;
-      margin: 0;
-      flex-basis: 100%;
+      position: absolute;
+      left: 0;
     }
   }
 
   a {
     text-decoration: none;
-    color: DarkGray;
+    color: white;
     font-weight: 600;
     transition: all 0.2s;
     border-bottom: 2px solid ${props => props.theme.colors.base};
@@ -51,22 +49,22 @@ const Menu = () => {
         <ul>
           <li>
             <Link to="/" activeStyle={activeLinkStyle}>
-              Home
+              Hem
             </Link>
           </li>
           <li>
             <Link to="/courses/" activeStyle={activeLinkStyle}>
-              Courses
+              Kurser
             </Link>
           </li>
           <li>
             <Link to="/about/" activeStyle={activeLinkStyle}>
-              About
+              Om e2p
             </Link>
           </li>
           <li>
             <Link to="/contact/" activeStyle={activeLinkStyle}>
-              Contact
+              Kontakta oss
             </Link>
           </li>
         </ul>
